@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ESP32 Controle das Tomadas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #1a1a5e;
+      color: #ffffff;
+    }
+    h1 {
+      color: #ffffff;
+    }
+    h2 {
+      color: #ffffff;
+    }
+    .toggle-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    .toggle-btn.on {
+      background-color: #28a745; /* Green when on */
+    }
+    .toggle-btn.off {
+      background-color: #dc3545; /* Red when off */
+    }
+    .toggle-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>ESP32 Controle de Tomadas</h1>
+  
+  <h2>Tomada 1</h2>
+  <button id="toggle-btn-1" class="toggle-btn off" onclick="toggleLamp(1)">Ligar</button>
+  
+  <h2>Tomada 2</h2>
+  <button id="toggle-btn-2" class="toggle-btn off" onclick="toggleLamp(2)">Ligar</button>
+
+  <script>
+    // Track the state of each outlet
+    let lampStates = [false, false]; // false means "off", true means "on"
+
+    function toggleLamp(lampNumber) {
+      const button = document.getElementById(`toggle-btn-${lampNumber}`);
+      lampStates[lampNumber - 1] = !lampStates[lampNumber - 1]; // Toggle the state
+
+      if (lampStates[lampNumber - 1]) {
+        button.textContent = 'Desligar';
+        button.classList.remove('off');
+        button.classList.add('on');
+        // Send a request to turn the lamp on
+        // Example: fetch(`/lamp${lampNumber}/on`);
+      } else {
+        button.textContent = 'Ligar';
+        button.classList.remove('on');
+        button.classList.add('off');
+        // Send a request to turn the lamp off
+        // Example: fetch(`/lamp${lampNumber}/off`);
+      }
+    }
+  </script>
+</body>
+</html>
