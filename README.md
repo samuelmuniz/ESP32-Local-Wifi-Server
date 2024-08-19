@@ -60,4 +60,4 @@ This project involves an ESP32 microcontroller that serves a web interface to co
 This project is open-source and available under the MIT License.
 
 ## Author
-Developed by [Your Name].
+Developed by Samuel MUNIZ SILVA.
